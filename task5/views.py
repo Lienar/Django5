@@ -63,9 +63,10 @@ def sign_up_by_django(request):
                 return render(request, 'registration_page.html', info)
 
             age = form.cleaned_data['age']
-            age = request.POST.get('age')
             if int(age) < 18:
                 info['error'] = 'Вы должны быть старше 18'
                 return render(request, 'registration_page.html', info)
+
+        return HttpResponse(f'Приветствуем, {name}!')
 
     return render(request, 'registration_page.html', info)
